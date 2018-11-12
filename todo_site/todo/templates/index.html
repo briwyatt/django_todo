@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,9 +6,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bri's TODO List</title>
+    <title>Restaurants in Nashville</title>
+     <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<h2>What do you want to do today?</h2>
+<h2>Which restaurants in Nashville do you want to try?</h2>
+<div  class="container-fluid" id="wrapper">
+    <ul class="list-group">
+        {% for restaurant in restaurant_list %}
+            {% if restaurant.complete %}
+            <li class="list-group-item todo-completed">{{ restaurant.text }}</li>
+            {% else %}
+            <li class="list-group-item">{{ restaurant.text }}></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+
+</div>
 </body>
 </html>
