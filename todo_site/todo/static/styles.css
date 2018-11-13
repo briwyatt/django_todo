@@ -4,8 +4,9 @@
 .t20 {
 	margin-top: 20px;
 }
-.todo-completed {
+.restaurant-visited {
 	text-decoration: line-through;
+    font-weight: bolder;
 }
 footer {
 	margin-top: 20px;
@@ -13,4 +14,7 @@ footer {
 }
 .list-group-item {
 	color: black;
+}
+.btn {
+    background-color: lightblue;
 }
