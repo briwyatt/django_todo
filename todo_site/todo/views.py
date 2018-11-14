@@ -26,7 +26,8 @@ def add_restaurant(request):
     form = TodoForm(request.POST)
     # take this data and add it to the database
     if form.is_valid():
-        new_restaurant = Restaurants(text=request.POST['text'])
+        new_restaurant = Restaurants(text=request.POST['text'],
+                                     comment=request.POST['comment'])
         new_restaurant.save()
     return redirect('index')
 
