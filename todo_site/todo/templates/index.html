@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load static %}
 {% block title %}<h2>Restaurants in Nashville To Try</h2>{% endblock %}
 {% block content %}
     <form action="{% url 'add' %}" method="POST" role="form">
@@ -19,11 +18,15 @@
             <button class="btn btn-default"><a href="{% url 'visited_list' %}">View Visited</a></button>
         </div>
     </form>
-            {% for restaurant in restaurant_list %}
-                {% if restaurant.visited  == False%}
-                    <a href="{% url 'check_off_restaurant' restaurant.id %}"><span><li class="list-group-item">{{ restaurant.text }}
-                                        <button class="btn btn-danger"><a href="{% url 'delete_restaurant' restaurant.id %}">delete</a></button>
-                    </li></span></a>
+    <div class="vue-root">
+        {% for restaurant in restaurant_list %}
+            {% if restaurant.visited  == False %}
+                <a href="{% url 'check_off_restaurant' restaurant.id %}">
+                    <span><li class="list-group-item">{{ restaurant.text }}
+                    <button class="btn btn-danger"><a href="{% url 'delete_restaurant' restaurant.id %}">delete</a></button>
+                    </li></span>
+                </a>
                 {% endif %}
-            {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock %}
