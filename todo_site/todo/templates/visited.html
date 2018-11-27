@@ -8,7 +8,9 @@
     <br>
     <ul class="list-group-item">
         {% for restaurant in visited_restaurants %}
-            <li>{{ restaurant.text }}</li>
+            <li>{{ restaurant.text }}
+                <p style="color: red"> {{ restaurant.comment }}</p>
+            </li>
             <br>
         {% endfor %}
     </ul>

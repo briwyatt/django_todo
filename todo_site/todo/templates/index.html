@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block title %}<h2>Restaurants in Nashville To Try</h2>{% endblock %}
 {% block content %}
+    <div id="vue1">
+            <p> [[ title ]] </p>
     <form action="{% url 'add' %}" method="POST" role="form">
         {% csrf_token %}
         <div class="form-group">
@@ -18,15 +20,25 @@
             <button class="btn btn-default"><a href="{% url 'visited_list' %}">View Visited</a></button>
         </div>
     </form>
-    <div class="vue-root">
+    <div>
         {% for restaurant in restaurant_list %}
             {% if restaurant.visited  == False %}
                 <a href="{% url 'check_off_restaurant' restaurant.id %}">
                     <span><li class="list-group-item">{{ restaurant.text }}
                     <button class="btn btn-danger"><a href="{% url 'delete_restaurant' restaurant.id %}">delete</a></button>
-                    </li></span>
+                    </li>   <p style="color: red">{{  restaurant.comment }}</p></span>
                 </a>
                 {% endif %}
         {% endfor %}
     </div>
+         </div>
+<script>
+new Vue({
+  delimiters: ['[[', ']]'],
+  el: '#vue1',
+  data: {
+    title: 'Vue Instance Title'
+  }
+})
+</script>
 {% endblock %}
